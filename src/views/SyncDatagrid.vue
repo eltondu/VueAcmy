@@ -5,8 +5,8 @@
             <e-columns>
             <e-column field='lastName' headerText='Last Name' width='120'></e-column>
             <e-column field='firstName' headerText='First Name' width='120'></e-column>
-            <e-column field='id' headerText='Id' width='120' textAlign='Right' editType='numericedit' :isPrimaryKey='true'></e-column>
-            <e-column field='idBook' headerText='Book Id' width='130' editType='numericedit' textAlign='Right'></e-column>                        
+            <e-column field='id' headerText='Id' width='120' :isPrimaryKey='true'></e-column>
+            <e-column field='idBook' headerText='Book Id' width='130' editType='numeric'></e-column>                        
         </e-columns> 
         </ejs-grid>
     </div>
@@ -20,30 +20,28 @@ import axios from "axios"
 
 Vue.use(GridPlugin);
 
-const orderDetails = []
-
 export default Vue.extend({
   data: () => {
-    return {        
+    return {    
+      isBusy: true,
       data: [],
       editSettings: { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' },
       toolbar: ['Add', 'Edit', 'Delete'],
       editparams: { params: { popupHeight: '300px' }},
-      pageSettings: { pageCount: 5}
+      pageSettings: { pageCount: 5},
+      totalRows: 1,
     };
   },
     mounted() {
     axios
       .get("https://fakerestapi.azurewebsites.net/api/v1/Authors")
       .then((res) => {
-          console.log(res)
         var before = Date.now();
         var elapsed = Date.now() - before;
         setTimeout(() => {
-          this.data = res.data;
-        //   this.tableRows = res.data;
-        //   this.isBusy = !this.isBusy;
-        //   this.totalRows = this.orderDetails.length;
+          this.data = res.data;          
+          this.isBusy = !this.isBusy;
+          this.totalRows = this.orderDetails.length;
         }, elapsed);
       })
       .catch((error) => {

@@ -31,6 +31,7 @@
       </template>
       <template #cell(actions)="row">
         <b-button
+          v-b-modal.modal-1
           size="sm"
           @click="onRowSelected(row.item)"
           class="mr-1"
@@ -49,6 +50,45 @@
         </b-button>
       </template>
     </b-table>
+    <b-modal id="modal-1" title="Edit">
+      <div role="group">
+        <b-form>
+          <b-row>
+            <b-col cols="6">
+              <label for="id">Book ID:</label>
+              <b-form-input
+                id="id"
+                v-model="selected.id"
+                readonly
+              ></b-form-input>
+            </b-col>
+            <b-col cols="6">
+              <label for="idBook">Book ID:</label>
+              <b-form-input
+                id="idBook"
+                v-model="selected.idBook"
+                placeholder="Enter Book ID"
+                required
+              ></b-form-input>
+            </b-col>
+          </b-row>
+          <label for="fisrtName">First Name:</label>
+          <b-form-input
+            id="fisrtName"
+            v-model="selected.firstName"
+            placeholder="Enter first name"
+            required
+          ></b-form-input>
+          <label for="lastName">First Name:</label>
+          <b-form-input
+            id="lastName"
+            v-model="selected.lastName"
+            placeholder="Enter last name"
+            required
+          ></b-form-input>
+        </b-form>
+      </div>
+    </b-modal>
   </div>
 </template>
 
@@ -58,7 +98,7 @@ export default {
   data() {
     return {
       isBusy: true,
-      fields: [        
+      fields: [
         { key: "firstName", sortable: true },
         { key: "lastName", sortable: true },
         { key: "idBook", sortable: true },
