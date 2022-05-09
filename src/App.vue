@@ -1,11 +1,18 @@
 <template>
   <div id="app">
     <header>
-      <img alt="Vue logo" class="logo" src="@/assets/logo.png" width="125" height="125" />
+      <img
+        alt="Vue logo"
+        class="logo"
+        src="@/assets/logo.png"
+        width="125"
+        height="125"
+      />
       <div class="wrapper">
         <nav>
           <router-link to="/">Home</router-link>
           <router-link to="/about">About</router-link>
+          <router-link to="/sync">Syncfusion Datagrid</router-link>
         </nav>
       </div>
     </header>
@@ -15,10 +22,19 @@
 </template>
 
 <style>
-@import '@/assets/base.css';
+@import "@/assets/base.css";
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';  
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';  
+@import '../node_modules/@syncfusion/ej2-calendars/styles/material.css';  
+@import '../node_modules/@syncfusion/ej2-dropdowns/styles/material.css';  
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';  
+@import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
+@import "../node_modules/@syncfusion/ej2-vue-grids/styles/material.css";
 
 #app {
-  margin: 0 auto;  
+  margin: 0 auto;
 }
 
 .main-page-custom {
